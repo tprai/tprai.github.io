@@ -27,7 +27,7 @@ function readData(key) {
 }
 
 function signIn(email, password) {
-  var user
+  var user;
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       user = userCredential.user;
