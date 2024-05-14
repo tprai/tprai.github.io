@@ -27,9 +27,10 @@ function readData(key) {
 }
 
 function signIn(email, password) {
+  var user
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      var user = userCredential.user;
+      user = userCredential.user;
       console.log('User signed in:', user);
       window.location.href='game.html';
     })
