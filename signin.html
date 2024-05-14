@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Sign In | Phane</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="plogo.png">
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+  <script src="setupMultiplayer.js"></script>
+</head>
+
+<body>
+  <center>
+    <h1>SIGN IN</h1>
+    <input id="email" placeholder="Email"><br><br>
+    <input id="password" placeholder="Password"><br><br>
+    <button onclick='signIn(document.getElementById("email").value,document.getElementById("password").value)'>Submit</button>
+    </form>
+  </center>
+
+</body>
+
+</html>
