@@ -7,7 +7,6 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     user = userCredential.user;
     console.log('User signed in:', user);
     localStorage.setItem('userInfo', user);
-    window.location.href='game.html';
   })
   .catch((error) => {
     var errorCode = error.code;
