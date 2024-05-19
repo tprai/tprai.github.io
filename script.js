@@ -8,7 +8,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     console.log('User signed in:', user);
     localStorage.setItem('userInfo', user);
   if (user.displayName == null){
-    const user.displayName = prompt("Enter a display name");
+    user.displayName = prompt("Enter a display name");
   }
   })
   .catch((error) => {
