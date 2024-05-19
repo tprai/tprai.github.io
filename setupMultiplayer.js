@@ -27,18 +27,6 @@ function readData(key) {
 }
 
 function signIn(email, password) {
-  var user;
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      user = userCredential.user;
-      console.log('User signed in:', user);
-      localStorage.setItem('userInfo', user);
-      window.location.href='game.html';
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      window.alert('Error signing in');
-      console.log('Error signing in:', errorCode, errorMessage);
-    });
+  localStorage.setItem('email', email);
+  localStorage.setItem('password', password);
 }
