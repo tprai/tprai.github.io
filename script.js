@@ -1,3 +1,6 @@
+//get player info
+var variable = localStorage.getItem('userInfo');
+
 //setting up canvas
 let playerposx = 0;
 let playerposy = 0;
