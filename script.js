@@ -98,8 +98,8 @@ window.onload = function() {
     if (gfg.keyCode === key_d) {
       playerposx = playerposx + 16;
     };
-    writeData(playerposx, firebase.User.displayName+"/x/")
-    writeData(playerposy, firebase.User.displayName+"/y/")
+    writeData(playerposx, user.displayName+"/x/")
+    writeData(playerposy, user.displayName+"/y/")
     printMap()
   };
 };
