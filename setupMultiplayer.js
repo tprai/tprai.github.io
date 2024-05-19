@@ -32,6 +32,7 @@ function signIn(email, password) {
     .then((userCredential) => {
       user = userCredential.user;
       console.log('User signed in:', user);
+      localStorage.setItem('userInfo', user);
       window.location.href='game.html';
     })
     .catch((error) => {
