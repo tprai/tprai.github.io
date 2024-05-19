@@ -1,5 +1,20 @@
-//get player info
-var user = localStorage.getItem('userInfo');
+//login and get player info
+var email = localStorage.getItem('email');
+var password = localStorage.getItem('password');
+var user;
+firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    user = userCredential.user;
+    console.log('User signed in:', user);
+    localStorage.setItem('userInfo', user);
+    window.location.href='game.html';
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert('Incorrect Credentials');
+    console.log('Error signing in:', errorCode, errorMessage);
+  });
 
 //setting up canvas
 let playerposx = 0;
