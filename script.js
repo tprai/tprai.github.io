@@ -14,6 +14,9 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     window.alert('Incorrect Credentials');
     console.log('Error signing in:', errorCode, errorMessage);
   });
+if (user.displayName == null){
+  const user.displayName = prompt("Enter a display name");
+}
 
 //setting up canvas
 let playerposx = 0;
