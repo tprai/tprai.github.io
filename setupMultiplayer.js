@@ -30,4 +30,5 @@ function signIn(email, password) {
   localStorage.clear();
   localStorage.setItem('email', email);
   localStorage.setItem('password', password);
+  window.location.replace("/game");
 }
