@@ -9,7 +9,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     localStorage.setItem('userInfo', user);
   if (user.displayName == null){
     holderDislpayName = prompt("Enter a display name");
-    firebase.auth().signInWithEmailAndPassword("jamie.l.kindt@gmail.com", "phaneisawesome")
+    firebase.auth().signInWithEmailAndPassword(email, password)
     .then(function(result) {
     return result.user.updateProfile({
     displayName: holderDislpayName
