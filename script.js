@@ -8,7 +8,15 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     console.log('User signed in:', user);
     localStorage.setItem('userInfo', user);
   if (user.displayName == null){
-    user.displayName = prompt("Enter a display name");
+    holderDislpayName = prompt("Enter a display name");
+    firebase.auth().signInWithEmailAndPassword("jamie.l.kindt@gmail.com", "phaneisawesome")
+    .then(function(result) {
+    return result.user.updateProfile({
+    displayName: holderDislpayName
+    })
+    }).catch(function(error) {
+    console.log("eerrrrrorrr");
+    });`
   }
   })
   .catch((error) => {
