@@ -16,7 +16,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     })
     }).catch(function(error) {
     console.log("eerrrrrorrr");
-    });`
+    });
   }
   })
   .catch((error) => {
