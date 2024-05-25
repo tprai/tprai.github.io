@@ -27,7 +27,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
   });
 
 //setting up canvas and stuff
-var canvas = document.getElementById('canvas');
+const canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var playerposx = 0;
@@ -43,9 +43,16 @@ var maptop = "\
               r \
                 \
                 ";
-
+var mapUnderground = "\
+qqqqqqqq\
+wwqqqqqq\
+wwwqqqee\
+wwqqqeee\
+qqqeeeee\
+eeeeeeee"
+  
 function printTile(tileset, xtile, ytile, printx, printy) {
-  canvas = document.getElementById('canvas');
+  const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext("2d");
   ctx.drawImage(tileset, xtile * 64, ytile * 64, 64, 64, printx * (canvas.width / 16) - playerposx, printy * (canvas.height / 10) - playerposy, canvas.width / 16, canvas.height / 10);
 }
@@ -64,7 +71,7 @@ function getTile(tile, j, i, tileset) {
 }
 
 function printMap() {
-  canvas = document.getElementById('canvas');
+  const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext("2d");
   ctx.drawImage(tileset_meadow, 64, 64, 64, 64, 0, 0, canvas.width, canvas.height);
 
