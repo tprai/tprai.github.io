@@ -63,16 +63,6 @@ function getTile(tile, j, i, tileset) {
 }
 
 function printMap() {
-  if (!tileset_meadow.complete) {
-    tileset_meadow.onload = function() {
-      drawMap();
-    };
-  } else {
-    drawMap();
-  }
-}
-
-function drawMap() {
   const ctx = canvas.getContext("2d");
   ctx.drawImage(tileset_meadow, 64, 64, 64, 64, 0, 0, canvas.width, canvas.height);
 
