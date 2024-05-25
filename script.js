@@ -2,6 +2,7 @@
 var email = localStorage.getItem('email');
 var password = localStorage.getItem('password');
 var user;
+var ctx;
 firebase.auth().signInWithEmailAndPassword(email, password)
   .then((userCredential) => {
     user = userCredential.user;
@@ -30,6 +31,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
 var canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+ctx = canvas.getContext("2d");
 var playerposx = 0;
 var playerposy = 0;
 var tileset_meadow = document.getElementById("tileset_meadow_id");
@@ -45,7 +47,6 @@ var maptop = "\
                 ";
 
 function printTile(tileset, xtile, ytile, printx, printy) {
-  const ctx = canvas.getContext("2d");
   ctx.drawImage(tileset, xtile * 64, ytile * 64, 64, 64, printx * (canvas.width / 16) - playerposx, printy * (canvas.height / 10) - playerposy, canvas.width / 16, canvas.height / 10);
 }
 
@@ -63,7 +64,6 @@ function getTile(tile, j, i, tileset) {
 }
 
 function printMap() {
-  const ctx = canvas.getContext("2d");
   ctx.drawImage(tileset_meadow, 64, 64, 64, 64, 0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < 4; i++) {
