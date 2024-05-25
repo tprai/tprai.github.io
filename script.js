@@ -33,6 +33,7 @@ canvas.height = window.innerHeight;
 var ctx = canvas.getContext("2d");
 var playerposx = 0;
 var playerposy = 0;
+var tileset_meadow = document.getElementById("tileset_meadow_id");
 var map = "\
 gggggggggggggggg\
 gggqwwwwwwegqwwb\
@@ -59,9 +60,6 @@ function getTile(tile, j, i, tileset) {
   }
 }
 function printMap() {
-  const canvas = document.getElementById("canvas");
-  const ctx = canvas.getContext("2d");
-  const tileset_meadow = document.getElementById("tileset_meadow_id");
   ctx.drawImage(tileset_meadow, 64, 64, 64, 64, 0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < 4; i++) {
