@@ -63,11 +63,6 @@ function getTile(tile, j, i, tileset) {
 }
 
 function printMap() {
-  if (!ctx) {
-    console.error("Canvas context (ctx) is not defined.");
-    return;
-  }
-
   if (!tileset_meadow.complete) {
     tileset_meadow.onload = function() {
       drawMap();
