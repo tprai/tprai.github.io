@@ -26,62 +26,36 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     console.log('Error signing in:', errorCode, errorMessage);
   });
 
-//setting up canvas
-let playerposx = 0;
-let playerposy = 0;
-let map = "\
+//setting up canvas and stuff
+var canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var ctx = canvas.getContext("2d");
+var playerposx = 0;
+var playerposy = 0;
+var map = "\
 gggggggggggggggg\
 gggqwwwwwwegqwwb\
 ggqntsrxysdgatdg\
 ggahstvwnhvwnhcg";
-let maptop = "\
+var maptop = "\
                 \
               r \
                 \
                 "
 function printTile(tileset, xtile, ytile, printx, printy) {
-  const canvas = document.getElementById("canvas");
-  const ctx = canvas.getContext("2d");
-
   ctx.drawImage(tileset, xtile * 64, ytile * 64, 64, 64, printx * (canvas.width / 16) - playerposx, printy * (canvas.height / 10) - playerposy, canvas.width / 16, canvas.height / 10);
 }
 function getTile(tile, j, i, tileset) {
-  if (tile == "q") {
-    printTile(tileset, 0, 0, j, i);
-  } else if (tile == "w") {
-    printTile(tileset, 1, 0, j, i);
-  } else if (tile == "e") {
-    printTile(tileset, 2, 0, j, i);
-  } else if (tile == "r") {
-    printTile(tileset, 3, 0, j, i);
-  } else if (tile == "t") {
-    printTile(tileset, 4, 0, j, i);
-  } else if (tile == "y") {
-    printTile(tileset, 5, 0, j, i)
-  } else if (tile == "a") {
-    printTile(tileset, 0, 1, j, i);
-  } else if (tile == "s") {
-    printTile(tileset, 1, 1, j, i);
-  } else if (tile == "d") {
-    printTile(tileset, 2, 1, j, i);
-  } else if (tile == "f") {
-    printTile(tileset, 3, 1, j, i);
-  } else if (tile == "g") {
-    printTile(tileset, 4, 1, j, i);
-  } else if (tile == "h") {
-    printTile(tileset, 5, 1, j, i);
-  } else if (tile == "z") {
-    printTile(tileset, 0, 2, j, i);
-  } else if (tile == "x") {
-    printTile(tileset, 1, 2, j, i);
-  } else if (tile == "c") {
-    printTile(tileset, 2, 2, j, i);
-  } else if (tile == "v") {
-    printTile(tileset, 3, 2, j, i);
-  } else if (tile == "b") {
-    printTile(tileset, 4, 2, j, i);
-  } else if (tile == "n") {
-    printTile(tileset, 5, 2, j, i);
+  const tileMap = {
+    'q': [0, 0], 'w': [1, 0], 'e': [2, 0], 'r': [3, 0], 't': [4, 0], 'y': [5, 0],
+    'a': [0, 1], 's': [1, 1], 'd': [2, 1], 'f': [3, 1], 'g': [4, 1], 'h': [5, 1],
+    'z': [0, 2], 'x': [1, 2], 'c': [2, 2], 'v': [3, 2], 'b': [4, 2], 'n': [5, 2]
+  };
+
+  if (tile in tileMap) {
+    const [x, y] = tileMap[tile];
+    printTile(tileset, x, y, j, i);
   }
 }
 function printMap() {
