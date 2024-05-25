@@ -43,10 +43,12 @@ var maptop = "\
                 \
               r \
                 \
-                "
+                ";
+
 function printTile(tileset, xtile, ytile, printx, printy) {
   ctx.drawImage(tileset, xtile * 64, ytile * 64, 64, 64, printx * (canvas.width / 16) - playerposx, printy * (canvas.height / 10) - playerposy, canvas.width / 16, canvas.height / 10);
 }
+
 function getTile(tile, j, i, tileset) {
   const tileMap = {
     'q': [0, 0], 'w': [1, 0], 'e': [2, 0], 'r': [3, 0], 't': [4, 0], 'y': [5, 0],
@@ -59,23 +61,41 @@ function getTile(tile, j, i, tileset) {
     printTile(tileset, x, y, j, i);
   }
 }
+
 function printMap() {
+  if (!ctx) {
+    console.error("Canvas context (ctx) is not defined.");
+    return;
+  }
+
+  if (!tileset_meadow.complete) {
+    tileset_meadow.onload = function() {
+      drawMap();
+    };
+  } else {
+    drawMap();
+  }
+}
+
+function drawMap() {
   ctx.drawImage(tileset_meadow, 64, 64, 64, 64, 0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 16; j++) {
       let tile = map[i * 16 + j];
-      getTile(tile, j, i, tileset_meadow)
+      getTile(tile, j, i, tileset_meadow);
     }
   }
 
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 16; j++) {
       let tile = maptop[i * 16 + j];
-      getTile(tile, j, i, tileset_meadow)
+      if (tile.trim()) { // Ensure we handle non-empty tiles
+        getTile(tile, j, i, tileset_meadow);
+      }
     }
   }
-};
+}
 window.onload = function() {
   var key_w = 87;
   var key_a = 65;
