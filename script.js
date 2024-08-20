@@ -33,6 +33,8 @@ canvas.height = window.innerHeight;
 var playerposx = 0;
 var playerposy = 0;
 var tileset_meadow = document.getElementById("tileset_meadow_id");
+var tileset_flatland = document.getElementById("tileset_flatland_id");
+var TILESET = tileset_meadow
 var map = "\
 gggggggggggggggg\
 gggqwwwwwwegqwwb\
@@ -51,13 +53,13 @@ wwqqqeee\
 qqqeeeee\
 eeeeeeee"
   
-function printTile(tileset, xtile, ytile, printx, printy) {
+function printTile(xtile, ytile, printx, printy) {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext("2d");
-  ctx.drawImage(tileset, xtile * 64, ytile * 64, 64, 64, printx * (canvas.width / 16) - playerposx, printy * (canvas.height / 10) - playerposy, canvas.width / 16, canvas.height / 10);
+  ctx.drawImage(TILESET, xtile * 64, ytile * 64, 64, 64, printx * (canvas.width / 16) - playerposx, printy * (canvas.height / 10) - playerposy, canvas.width / 16, canvas.height / 10);
 }
 
-function getTile(tile, j, i, tileset) {
+function getTile(tile, j, i) {
   const tileMap = {
     'q': [0, 0], 'w': [1, 0], 'e': [2, 0], 'r': [3, 0], 't': [4, 0], 'y': [5, 0],
     'a': [0, 1], 's': [1, 1], 'd': [2, 1], 'f': [3, 1], 'g': [4, 1], 'h': [5, 1],
@@ -66,19 +68,19 @@ function getTile(tile, j, i, tileset) {
 
   if (tile in tileMap) {
     const [x, y] = tileMap[tile];
-    printTile(tileset, x, y, j, i);
+    printTile(x, y, j, i);
   }
 }
 
 function printMap() {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext("2d");
-  ctx.drawImage(tileset_meadow, 64, 64, 64, 64, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(TILESET, 64, 64, 64, 64, 0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 16; j++) {
       let tile = map[i * 16 + j];
-      getTile(tile, j, i, tileset_meadow);
+      getTile(tile, j, i, TILESET);
     }
   }
 
@@ -86,7 +88,7 @@ function printMap() {
     for (let j = 0; j < 16; j++) {
       let tile = maptop[i * 16 + j];
       if (tile.trim()) { // Ensure we handle non-empty tiles
-        getTile(tile, j, i, tileset_meadow);
+        getTile(tile, j, i, TILESET);
       }
     }
   }
