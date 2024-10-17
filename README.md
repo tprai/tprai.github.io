@@ -1,1 +1,1 @@
-developing a multiplayer online sandbox game.
+no longer developing a multiplayer online sandbox game.
